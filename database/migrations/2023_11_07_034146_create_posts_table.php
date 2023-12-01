@@ -18,7 +18,8 @@ return new class extends Migration
             $table->text('body');
             $table->string('img',100)->nullable();
             $table->string('url',200)->nullable();
-            $table->string('created_by')->references('name')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

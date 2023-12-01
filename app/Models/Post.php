@@ -28,7 +28,7 @@ class Post extends Model
         'body',
         'img',
         'url',
-        'created_by'
+        'user_id'
     ];
 
     /**
