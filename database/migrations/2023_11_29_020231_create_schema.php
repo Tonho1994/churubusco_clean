@@ -21,7 +21,7 @@ return new class extends Migration
         //$file = dirname(__DIR__,1)."/sql_files/database_name_20160527.sql";
         //DB::unprepared(File::get($file));
 
-        DB::unprepared(file_get_contents(__dir__ . '/sql_files/schema_01122023.sql'));
+        //DB::unprepared(file_get_contents(__dir__ . '/sql_files/schema_05122023.sql'));
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         //Schema::dropIfExists('schema');
-        DB::unprepared(file_get_contents(__dir__ . '/sql_files/drop_schema.sql'));
+        //DB::unprepared(file_get_contents(__dir__ . '/sql_files/drop_schema.sql'));
     }
 };
