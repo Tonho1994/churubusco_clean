@@ -3,23 +3,21 @@
 namespace App\Models\Schema;
 
 use Illuminate\Database\Eloquent\Model;
-use Thiagoprz\CompositeKey\HasCompositeKey;
 
-class TransaccionCosto extends Model
+class Cliente extends Model
 {
-    use HasCompositeKey;
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'churubuscoclean.transacciones_costo';
+    protected $table = 'churubuscoclean.clientes';
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = ['transaccion_id', 'producto_servicio_id', 'consecutivo_productos_servicios'];
+    protected $primaryKey = 'transaccion_id';
     /**
      * Indicates if the model's ID is auto-incrementing.
      *
@@ -31,7 +29,6 @@ class TransaccionCosto extends Model
      *
      * @var string
      */
-    protected $keyType = 'string';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -45,11 +42,15 @@ class TransaccionCosto extends Model
      */
     protected $fillable = [
         'transaccion_id',
-        'producto_servicio_id',
-        'consecutivo_productos_servicios',
-        'total_productos',
-        'impuesto',
-        /* 'costo_distancia', */
-        'total_costo'
+        'correo_electronico',
+        'telefono',
+        'nombre',
+        'apellido_paterno',
+        'apellido_materno',
+        'calle',
+        'colonia',
+        'municipio',
+        'estado',
+        'codigo_postal',
     ];
 }

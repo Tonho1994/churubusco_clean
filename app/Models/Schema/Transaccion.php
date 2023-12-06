@@ -33,7 +33,7 @@ class Transaccion extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'transaccion_id',
-        'fecha_alta'
+        /* 'transaccion_id',
+        'fecha_alta' */
     ];
 }

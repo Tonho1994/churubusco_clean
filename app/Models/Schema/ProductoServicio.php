@@ -30,9 +30,9 @@ class ProductoServicio extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'producto_servicio_id',
+        /* 'producto_servicio_id', */
         'padre_producto_servicio_id',
-        'costo',
+        /* 'costo', */
         'nombre'
     ];
 

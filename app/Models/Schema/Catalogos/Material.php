@@ -30,7 +30,7 @@ class Material extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'material_id',
+        /* 'material_id', */
         'descripcion_material'
     ];
 }
