@@ -53,9 +53,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    //RELACIONES
+
     /**
      * Los posts de un usuario
-     * Relacion 1:n
      */
     public function posts(): HasMany
     {

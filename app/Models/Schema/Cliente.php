@@ -3,6 +3,7 @@
 namespace App\Models\Schema;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Cliente extends Model
 {
@@ -53,4 +54,11 @@ class Cliente extends Model
         'estado',
         'codigo_postal',
     ];
+    /**
+     * transaccion qeu realizo el cliente
+     */
+    public function transaccion(): BelongsTo
+    {
+        return $this->belongsTo(Transaccion::class, 'transaccion_id', 'transaccion_id');
+    }
 }

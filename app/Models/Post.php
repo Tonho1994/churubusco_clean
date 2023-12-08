@@ -31,9 +31,10 @@ class Post extends Model
         'user_id'
     ];
 
+    //RELACIONES
+
     /**
      * El usuario que hizo el post
-     * Relacion 1:1
      */
     public function user(): BelongsTo
     {

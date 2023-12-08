@@ -2,7 +2,10 @@
 
 namespace App\Models\Schema\Catalogos;
 
+use App\Models\Schema\ProductoServicio;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Material extends Model
 {
@@ -33,4 +36,14 @@ class Material extends Model
         /* 'material_id', */
         'descripcion_material'
     ];
+
+    //RELACIONES
+
+    /**
+     * producto_servicio al que pertenece el material
+     */
+    public function productoServicio(): BelongsToMany
+    {
+        return $this->belongsToMany(ProductoServicio::class, 'productos_servicios_materiales', 'material_id', 'producto_servicio_id')->withPivot('habilitado_boolean');
+    }
 }

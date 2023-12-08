@@ -2,8 +2,11 @@
 
 namespace App\Models\Schema;
 
+use App\Models\Schema\Transaccion;
 use Illuminate\Database\Eloquent\Model;
 use Thiagoprz\CompositeKey\HasCompositeKey;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TransaccionCosto extends Model
 {
@@ -52,4 +55,18 @@ class TransaccionCosto extends Model
         /* 'costo_distancia', */
         'total_costo'
     ];
+    /**
+     * Transaccion a la que pertenece
+     */
+    public function transaccion(): BelongsTo
+    {
+        return $this->belongsTo(Transaccion::class, 'transaccion_id', 'transaccion_id');
+    }
+    /**
+     * El detalle de la transaccion
+     */
+    public function detalle(): HasOne
+    {
+        return $this->hasOne(DetalleTransaccion::class, ['transaccion_id', 'producto_servicio_id','consecutivo_productos_servicios'], ['transaccion_id', 'producto_servicio_id','consecutivo_productos_servicios']);
+    }
 }

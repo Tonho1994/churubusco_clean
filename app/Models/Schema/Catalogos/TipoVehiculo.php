@@ -2,7 +2,9 @@
 
 namespace App\Models\Schema\Catalogos;
 
+use App\Models\Schema\ProductoServicio;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TipoVehiculo extends Model
 {
@@ -33,4 +35,15 @@ class TipoVehiculo extends Model
         /* 'tipo_vehiculo_id', */
         'descripcion_tipo_vehiculo'
     ];
+
+    //RELACIONES
+
+    /**
+     * Producto_servicio al qeu pertenece el tipo de vehiculo
+     */
+    public function productoServicio(): BelongsToMany
+    {
+        return $this->belongsToMany(ProductoServicio::class, 'productos_servicios_tipos_vehiculo', 'tipo_vehiculo_id', 'producto_servicio_id')->withPivot('habilitado_boolean');
+    }
 }
+

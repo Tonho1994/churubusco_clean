@@ -2,8 +2,11 @@
 
 namespace App\Models\Schema;
 
+use App\Models\Schema\ProductoServicio;
 use Illuminate\Database\Eloquent\Model;
 use Thiagoprz\CompositeKey\HasCompositeKey;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class CaracteristicaProductoServicio extends Model
 {
@@ -48,4 +51,14 @@ class CaracteristicaProductoServicio extends Model
         'atributo',
         'campo_tabla'
     ];
+
+    //RELACIONES
+
+    /**
+     * producto_servicio al que pertenece la caracteristica
+     */
+    public function productoServicio(): BelongsTo
+    {
+        return $this->belongsTo(ProductoServicio::class, 'producto_servicio_id', 'producto_servicio_id');
+    }
 }

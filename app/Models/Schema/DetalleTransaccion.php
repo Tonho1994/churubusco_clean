@@ -2,8 +2,10 @@
 
 namespace App\Models\Schema;
 
+use App\Models\Schema\TransaccionCosto;
 use Illuminate\Database\Eloquent\Model;
 use Thiagoprz\CompositeKey\HasCompositeKey;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DetalleTransaccion extends Model
 {
@@ -58,4 +60,11 @@ class DetalleTransaccion extends Model
         'campo009',
         'campo010'
     ];
+    /**
+     * Costo de la transaccion
+     */
+    public function costo(): BelongsTo
+    {
+        return $this->belongsTo(TransaccionCosto::class, ['transaccion_id', 'producto_servicio_id','consecutivo_productos_servicios'], ['transaccion_id', 'producto_servicio_id','consecutivo_productos_servicios']);
+    }
 }
