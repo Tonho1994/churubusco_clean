@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Schema\Catalogos\Material;
 use App\Models\Schema\Catalogos\TipoVehiculo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\Schema\CaracteristicaProductoServicio;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -40,6 +41,16 @@ class ProductoServicio extends Model
         /* 'costo', */
         'nombre'
     ];
+
+    //SCOPES
+
+    /**
+     * Scope a query to only include popular users.
+     */
+    public function scopeServicios(Builder $query): void
+    {
+        $query->where('padre_producto_servicio_id', null);
+    }
 
     //RELACIONES
 

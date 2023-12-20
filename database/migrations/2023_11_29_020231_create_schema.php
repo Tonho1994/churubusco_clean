@@ -21,7 +21,7 @@ return new class extends Migration
         //$file = dirname(__DIR__,1)."/sql_files/database_name_20160527.sql";
         //DB::unprepared(File::get($file));
 
-        //DB::unprepared(file_get_contents(__dir__ . '/sql_files/schema_05122023.sql'));
+        DB::unprepared(file_get_contents(__dir__ . '/sql_files/schema_18122023.sql'));
     }
 
     /**
