@@ -37,19 +37,28 @@ class ProductoServicio extends Model
      */
     protected $fillable = [
         /* 'producto_servicio_id', */
-        'padre_producto_servicio_id',
+        /* 'padre_producto_servicio_id', */
         /* 'costo', */
-        'nombre'
+        /* 'nombre' */
     ];
 
     //SCOPES
 
     /**
-     * Scope a query to only include popular users.
+     * Obtiene los Servicios Principales.
      */
     public function scopeServicios(Builder $query): void
     {
         $query->where('padre_producto_servicio_id', null);
+    }
+
+    /**
+     * Obtiene el servicio principal y los servicios hijos.
+     */
+    public function scopeServicioHijos(Builder $query,int $id): void
+    {
+        $query->where('producto_servicio_id',$id)
+            ->orWhere('padre_producto_servicio_id', $id);
     }
 
     //RELACIONES

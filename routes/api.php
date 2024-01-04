@@ -19,7 +19,8 @@ use App\Http\Controllers\ServiciosController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//Obtiene los posts de los administradores del sistema
 Route::get('/posts', [PostController::class, 'getPosts']);
-Route::get('/servicios/{id?}', [ServiciosController::class, 'getServicios'])->whereNumber('id')->name('get.servicios');
+//Obtiene los servicios de limpieza disponibles
+Route::get('/servicios/{id?}', [ServiciosController::class, 'getServicios'])->name('get.servicios');
 
