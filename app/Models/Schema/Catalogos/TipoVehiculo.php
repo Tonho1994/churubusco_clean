@@ -33,7 +33,7 @@ class TipoVehiculo extends Model
      */
     protected $fillable = [
         /* 'tipo_vehiculo_id', */
-        'descripcion_tipo_vehiculo'
+        'descripcion'
     ];
 
     //RELACIONES

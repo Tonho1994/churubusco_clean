@@ -15,7 +15,7 @@ class ServiciosController extends Controller
      * @param  string  $id Identificador del servicio
      * @return json Datos de los servicios encontrados
      */
-    public function getServicios(?string $id='0'){
+    public function getServicios(string $id='0'){
         //Validamos
         $rules = [
             'id' => 'integer',
@@ -23,18 +23,18 @@ class ServiciosController extends Controller
         $messages = [
             'id.integer' => 'Solo se permiten números enteros.',
         ];
-        $validator = Validator::make(['id'=>$id], $rules,$messages);
+        $validator = Validator::make(['id'=>$id],$rules,$messages);
         if ($validator->fails()) {
             throw new HttpResponseException(response()->json([
                 'success'   => false,
-                'errors'      => $validator->errors()
+                'errors'    => $validator->errors()
             ],422));
         }
         //Entregamos el arreglo de datos de acuerdo a lo solicitado
         if($validator->validated()['id']==0){
-            return new ProductoServicioCollection(ProductoServicio::servicios()
+            return ['servicios'=> ProductoServicio::Servicios()
                 ->select('producto_servicio_id','nombre')
-                ->get());
+                ->get()->toArray()];
         }
         else{
             return new ProductoServicioCollection(ProductoServicio::ServicioHijos($id)

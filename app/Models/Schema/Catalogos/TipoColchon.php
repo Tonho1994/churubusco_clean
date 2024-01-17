@@ -6,21 +6,20 @@ use App\Models\Schema\ProductoServicio;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-
-class Material extends Model
+class TipoColchon extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'churubuscoclean.materiales';
+    protected $table = 'churubuscoclean.tipos_colchon';
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'material_id';
+    protected $primaryKey = 'tipo_colchon_id';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -33,17 +32,18 @@ class Material extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        /* 'material_id', */
+        /* 'tipo_colchon_id', */
         'descripcion'
     ];
 
     //RELACIONES
 
     /**
-     * producto_servicio al que pertenece el material
+     * Producto_servicio al qeu pertenece el tipo de colchon
      */
     public function productoServicio(): BelongsToMany
     {
-        return $this->belongsToMany(ProductoServicio::class, 'productos_servicios_materiales', 'material_id', 'producto_servicio_id')->withPivot('habilitado_boolean');
+        return $this->belongsToMany(ProductoServicio::class, 'productos_servicios_tipos_colchon', 'tipo_colchon_id', 'producto_servicio_id')->withPivot('habilitado_boolean');
     }
 }
+

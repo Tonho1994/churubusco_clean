@@ -7,20 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
-class Material extends Model
+class Tamano extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'churubuscoclean.materiales';
+    protected $table = 'churubuscoclean.tamanios';
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'material_id';
+    protected $primaryKey = 'tamanio_id';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -33,17 +33,17 @@ class Material extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        /* 'material_id', */
+        /* 'tamanio_id', */
         'descripcion'
     ];
 
     //RELACIONES
 
     /**
-     * producto_servicio al que pertenece el material
+     * producto_servicio al que pertenece el tamaño
      */
     public function productoServicio(): BelongsToMany
     {
-        return $this->belongsToMany(ProductoServicio::class, 'productos_servicios_materiales', 'material_id', 'producto_servicio_id')->withPivot('habilitado_boolean');
+        return $this->belongsToMany(ProductoServicio::class, 'productos_servicios_tamanios', 'tamanio_id', 'producto_servicio_id')->withPivot('habilitado_boolean');
     }
 }
