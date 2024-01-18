@@ -52,7 +52,8 @@ class ProductoServicio extends Model
      */
     public function scopeServicios(Builder $query): void
     {
-        $query->where('padre_producto_servicio_id', null);
+        $query->select('producto_servicio_id','nombre')
+            ->where('padre_producto_servicio_id', null);
     }
     /**
      * Obtiene el servicio principal y los servicios hijos.

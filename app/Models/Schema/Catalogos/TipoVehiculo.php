@@ -35,6 +35,12 @@ class TipoVehiculo extends Model
         /* 'tipo_vehiculo_id', */
         'descripcion'
     ];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['pivot'];
 
     //RELACIONES
 

@@ -35,6 +35,12 @@ class TipoColchon extends Model
         /* 'tipo_colchon_id', */
         'descripcion'
     ];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['pivot'];
 
     //RELACIONES
 

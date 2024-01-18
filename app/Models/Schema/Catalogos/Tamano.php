@@ -36,6 +36,12 @@ class Tamano extends Model
         /* 'tamanio_id', */
         'descripcion'
     ];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['pivot'];
 
     //RELACIONES
 

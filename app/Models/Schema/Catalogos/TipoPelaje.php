@@ -35,6 +35,12 @@ class TipoPelaje extends Model
         /* 'tipo_pelaje_id', */
         'descripcion'
     ];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['pivot'];
 
     //RELACIONES
 
