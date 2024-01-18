@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\Auth\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,13 @@ use App\Http\Controllers\ServiciosController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::match(['get', 'post'],'/login', [AuthController::class, 'login'])->name('login');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    })->name('get.user');
 });
 //Obtiene los posts de los administradores del sistema
 Route::get('/posts/{id?}', [PostController::class, 'getPosts'])->name('get.posts');
