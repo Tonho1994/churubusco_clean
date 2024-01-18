@@ -36,7 +36,7 @@ class ServiciosController extends Controller
                 ->get());
         }
         else{
-            return new ProductoServicioCollection(ProductoServicio::ServicioHijos($id)
+            return new ProductoServicioCollection(ProductoServicio::ServicioHijos($validator->validated()['id'])
                 ->get());
         }
     }

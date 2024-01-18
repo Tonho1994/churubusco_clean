@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Obtiene los posts de los administradores del sistema
-Route::get('/posts', [PostController::class, 'getPosts']);
+Route::get('/posts/{id?}', [PostController::class, 'getPosts'])->name('get.posts');
 //Obtiene los servicios de limpieza disponibles
 Route::get('/servicios/{id?}', [ServiciosController::class, 'getServicios'])->name('get.servicios');
 
