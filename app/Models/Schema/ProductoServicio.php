@@ -43,6 +43,8 @@ class ProductoServicio extends Model
         /* 'padre_producto_servicio_id', */
         /* 'costo', */
         /* 'nombre' */
+        /* 'caracteristicas' */
+        /* 'imagen' */
     ];
 
     //SCOPES
@@ -52,8 +54,9 @@ class ProductoServicio extends Model
      */
     public function scopeServicios(Builder $query): void
     {
-        $query->select('producto_servicio_id','nombre')
-            ->where('padre_producto_servicio_id', null);
+        $query->select('producto_servicio_id','nombre','caracteristicas','imagen')
+            ->where('padre_producto_servicio_id', null)
+            ->orderBy('producto_servicio_id');
     }
     /**
      * Obtiene el servicio principal y los servicios hijos.
@@ -76,7 +79,8 @@ class ProductoServicio extends Model
             }])
             ->with(['tiposPelajes' => function ($query) {
                 $query->where('habilitado_boolean', true);
-            }]);
+            }])
+            ->orderBy('producto_servicio_id');
     }
 
     //RELACIONES

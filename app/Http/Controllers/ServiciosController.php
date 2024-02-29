@@ -32,8 +32,7 @@ class ServiciosController extends Controller
         }
         //Entregamos el arreglo de datos de acuerdo a lo solicitado
         if($validator->validated()['id']==0){
-            return new ProductoServicioCollection(ProductoServicio::Servicios()
-                ->get());
+            return new ProductoServicioCollection(ProductoServicio::Servicios()->get());
         }
         else{
             //primera solucion de filtrado
