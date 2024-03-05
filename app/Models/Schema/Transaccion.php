@@ -10,15 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Transaccion extends Model
 {
-    /**
-     * The "booted" method of the model.
-     */
-    protected static function booted(): void
-    {
-        static::creating(function (Transaccion $transaccion) {
-            $transaccion->fecha_alta = now();
-        });
-    }
+    const CREATED_AT = 'fecha_alta';
+    const UPDATED_AT = null;
     /**
      * The table associated with the model.
      *
@@ -37,7 +30,7 @@ class Transaccion extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        /* 'transaccion_id',
+       /*  'transaccion_id',
         'fecha_alta' */
     ];
     /**

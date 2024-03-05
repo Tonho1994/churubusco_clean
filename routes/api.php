@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\TransaccionesController;
 use App\Http\Controllers\Auth\Api\AuthController;
 
 /*
@@ -29,4 +30,6 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/posts/{id?}', [PostController::class, 'getPosts'])->name('get.posts');
 //Obtiene los servicios de limpieza disponibles
 Route::get('/servicios/{id?}', [ServiciosController::class, 'getServicios'])->name('get.servicios');
+//Recibe el resultado final de un cotizador
+Route::post('/cotizador/guardarOrden', [TransaccionesController::class, 'saveTransaccion'])->name('save.transaccion');
 

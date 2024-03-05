@@ -52,7 +52,6 @@ class TransaccionCosto extends Model
         'consecutivo_productos_servicios',
         'total_productos',
         'impuesto',
-        /* 'costo_distancia', */
         'total_costo'
     ];
     /**
