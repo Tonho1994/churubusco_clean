@@ -139,6 +139,14 @@ class TransaccionesServices
     private static function validaCaracteristicas($datos,$messages){
         //Obtenemos las caracteristicas del servicio
         $catacteristicas = ProductoServicio::find($datos['producto_servicio_id'])->caracteristicas()->orderBy('campo_tabla')->get();
+        //validamos si existen dichas caracteristicas
+        if ($catacteristicas->isEmpty()) {
+            throw new HttpResponseException(response()->json([
+                'success'   => false,
+                'errors'    => 'No hay caracteristicas registradas para ese servicio.',
+                'code'    => 'TS-02'
+            ],500));
+        }
         //creamos las reglas
         foreach ($catacteristicas as $catacteristica) {
             $rules[$catacteristica->atributo] = 'required|numeric';

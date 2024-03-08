@@ -11,7 +11,7 @@ class TransaccionesController extends Controller
      * Almacena una transaccion resultante de un cotizador de servicios
      *
      * @param  Illuminate\Http\Request  $request peticion con la informacion de un cotizador
-     * @return json Datos de la trnasaccion creada
+     * @return json Datos de la transaccion creada
      */
     public function saveTransaccion(Request $request){
         $datos = $request->all();
